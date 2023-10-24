@@ -15,7 +15,7 @@
 \begin{proof}
     Recall that if $R(x,y)$ is a relation we define its strict part to be 
     \[ <_R = \{(x,y) \colon R(x,y) \& \neg R(y,x)\} \] 
-    So, if $R$ is $\undertilde{\Delta}^1_n$ we see that $<_R$ is $\undertilde{\Delta}^1_n$ as well. Hence, if $R$ is a Borel relation then $<_R$ must be $\aleph_0$-Suslin and so, applying the Kunen-Martin theorem, it must have length less than $\aleph_1$. Similarly, if $R$ is $\undertilde{\Delta}_2^1$ then $<_R$ is $\aleph_1$-Suslin and so has length less thatn $\aleph_2$.
+    So, if $R$ is $\undertilde{\Delta}^1_n$ we see that $<_R$ is $\undertilde{\Delta}^1_n$ as well. Hence, if $R$ is a Borel relation then $<_R$ must be $\aleph_0$-Suslin and so, applying the Kunen-Martin theorem, it must have length less than $\aleph_1$. Similarly, if $R$ is $\undertilde{\Delta}_2^1$ then $<_R$ is $\aleph_1$-Suslin and so has length less than $\aleph_2$.
 \end{proof}
 
 \begin{exercise}
@@ -39,5 +39,11 @@ Given a norm $\vp$ on $S$ the associated the binary relation $\le^{\vp}$ on $S$ 
 \end{exercise}
 
 \begin{proof}
-    
+    If $\preceq$ is a prewellordering, we claim that its rank function $\rho$ is a norm on $S$ such that $\preceq = \le^{\rho}$, ie. for all $x,y \in S$ 
+    \[ x \preceq y \Leftrightarrow \rho(x) \le \rho(y) \]
+    This follows from the fact that if $x \preceq y$ then $\rho(x) \le \rho(x)$ since all elemnts of $S$ strictly below $x$ will also be strictly below $y$. Similarly, if $\neg x \preceq y$, then $y$ is strictly below $x$ so $\rho(y) < \rho(x)$.  \\
+    Conversely, if there is some norm $\vp$ on $S$ such that $\preceq = \le^{\vp}$, $\preceq$ must be prewellordering since $\le$ is a wellorder and, under the pullback, the only condition it may fail to satisfy is antisymmetry. \\ 
+    To show that there is a unique regular norm satisfying this property note that the rank function $\rho$ is a regular norm since it is onto $\lambda = |\preceq|$ and so to show uniqueness it is enough to show any regular norm is equal to $\rho$. We do this by induction on the ordering: Suppose that $\vp$ is another regular norm and for all $y$ strictly below $x$, $\vp(y) = \rho(y)$. We must have 
+    \[ \vp(x) \ge \sup\{ \vp(y)+1 \colon y \prec x\} = \sup\{ \rho(y) + 1 \colon y \prec x\} = \rho(x) \]
+    and if this inequality is strict, since $\vp$ is surjective, there must be some $z$ such that $\vp(z) = \rho(x)$. We cannot have $z \prec x$ (otherwise $\vp(z) = \rho(z) < \rho(x)$) and so $x \preceq z$. However, this implies $\vp(x) \le \vp(z)$ contradicting our choice of $z$. Hence, we must have $\vp(x) = \rho(x)$ as well. 
 \end{proof}
