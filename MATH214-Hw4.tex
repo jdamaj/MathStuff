@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{positioning}
+\usepackage{graphicx}
+\usepackage{float}
+
+\usepackage{bbm}
+
+\title{MATH 214 Hw4}
+\author{Jad Damaj}
+\date{Feb 15, 2024}
+
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bH}{\mathbb{H}}
+\newcommand{\ex}{\exists}
+\newcommand{\fa}{\forall}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\from}{\leftarrow}
+\newcommand{\ifff}{\leftrightarrow}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\vn}{\varnothing}
+\newcommand{\vp}{\varphi}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\bB}{\mathbb{B}}
+\newcommand{\bS}{\mathbb{S}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cV}{\mathcal{V}}
+
+\newcommand{\im}{\text{im }}
+\newcommand{\Tot}{\text{Tot}}
+\newcommand{\dom}{\text{dom}}
+\newcommand{\Hom}{\text{Hom}}
+
+\newcommand{\Conv}{\mathop{\scalebox{1.5}{\raisebox{-0.2ex}{$\ast$}}}}
+
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}
+
+\begin{document}
+
+\maketitle
+
+\begin{exercise}[Lee 3.1]
+    Suppose $M$ and $N$ are smooth manifolds with or without boundary, and $F: M \to N$ is a smooth map. Show that $dF_p: T_p M \to T_p N$ is the zero map for each $p \in M$ if and only if $F$ is constant on each component of $M$. 
+\end{exercise}
+
+\begin{proof}
+    First, suppose that $F$ is a smooth map such that $dF_p$ is the zero map for each $p \in M$. We first consider the case where $M$ and $N$ and $\bR^m$ and $\bR^n$. In this case the map $dF_p$ is the matrix $( \partial F^1/ \partial x^j(p))_{ij}$ and so we have the all partials of $F$ are 0 at all points $p$ and so $F$ must be constant on each component. In the case where $M$ and $N$ are arbitrary manifolds, consider charts $(U, \vp)$ and $(V, \psi)$ for the points $p$ and $F(p)$, respectively. If $dF_p$ is 0 for all $p$ then $d(\psi \circ F\circ \vp^{-1})_p = 0$. Then, as this is a map between open subsets of Euclidean space the above proof shows that $\psi \circ F \circ \vp^{-1}$ must be constant on each component and so, since $\psi, \vp$ are homeomorphisms $F$ must be also. Hence, we have shown that for each point $p \in M$, $F$ is constant each component in a neighborhood of $p$ and so it follows that this holds for all of $M$. 
+\end{proof}
+
+\begin{exercise}[Lee 3.3]
+    Prove that if $M$ and $N$ are smooth manifolds, then $T(M \times N)$ is diffeomorphic to $TM \times TN$. 
+\end{exercise}
+
+\begin{proof}
+    Suppose $M$ and $N$ are smooth manifolds. Recall that for each $p \in M$ we have an isomorphism of the tangent spaces $T_p(M \times N)$ and $T_p M \times T_p N$ given by $\alpha(v) = (d(\pi_1)_p(v), d(\pi_2)_p(v))$. Define a map $T(M \times N) \to T M \times TN$ by $f (((p,q), v)) = ( (p, d(\pi_1)_{(p,q)} (v)), (q, d(\pi_2)_{(p,q)}(v)))$. Since the map $\alpha$ is an isomorphism it is clear that this map is bijective so to show it is a diffeomorphism we show it is smooth with smooth inverse. \\ 
+    First, to check it is smooth at $(p,q)$ 
+\end{proof}
+
+\begin{exercise}[Lee 3.4]
+    Show that $T \bS^1$ is diffeomorphic to $\bS^1 \times \bR$. 
+\end{exercise}
+
+\begin{exercise}
+    Let $\bS^1 \subseteq \bR^2$ be the unit circle, and let $K \subseteq \bR^2$ be the boundary of the square of side 2 centered at the origin: $K = \{(x,y) \colon \max\{|x|, |y|\} = 1\}$. Show that there is a homeomorphism $F: \bR^2 \to \bR^2$ such that $F(\bS^1) = K$, but there is no diffeomorphism with the same property.  
+\end{exercise}
+
+\begin{exercise}[Lee 3.7]
+    Let $M$ be a smooth manifold with or without boundary and $p$ a point of $M$. Let $C_p^{\infty}(M)$ denote the algebra of germs of smooth real-valued functions at $p$, and let $\cD_pM$ denote the vector space of derivations of $C_p^{\infty}(M)$. Define a map $\phi: \cD_pM \to T_pM$ by $(\phi v)f = v([f]_p)$. Show that $\phi$ is an isomorphism.
+\end{exercise}
+
+\begin{proof}
+    
+\end{proof}
+
+\begin{exercise}[Lee 3.8]
+    Let $M$ be a smooth manifold with or without boundary and $p \in M$. Let $\cV_p M$ denote the set of equivalence classes of curves starting at $p$ under the relation $\gamma_1 \sim \gamma_2$ of $(f \circ \gamma_1)'(0) = (f \circ \gamma_2)'(0)$ for every smooth real-valued function $f$ defined in a neighborhood of $p$. Show that the map $\psi: \cV_pM \to T_pM$ defined by $(\psi[\gamma])(f) = (f \circ \gamma)'(0)$ is well defined and bijective.  
+\end{exercise}
+
+\end{document}
