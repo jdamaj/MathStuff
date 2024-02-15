@@ -76,7 +76,14 @@
 
 \begin{proof}
     Suppose $M$ and $N$ are smooth manifolds. Recall that for each $p \in M$ we have an isomorphism of the tangent spaces $T_p(M \times N)$ and $T_p M \times T_p N$ given by $\alpha(v) = (d(\pi_1)_p(v), d(\pi_2)_p(v))$. Define a map $T(M \times N) \to T M \times TN$ by $f (((p,q), v)) = ( (p, d(\pi_1)_{(p,q)} (v)), (q, d(\pi_2)_{(p,q)}(v)))$. Since the map $\alpha$ is an isomorphism it is clear that this map is bijective so to show it is a diffeomorphism we show it is smooth with smooth inverse. \\ 
-    First, to check it is smooth at $(p,q)$ 
+    First, to check it is smooth at $((p,q), v)$ fix smooth charts $(U, \vp)$ and $(V, \psi)$ containing $p$ and $q$ in $M$ and $N$, respectively. Then, $(\pi^{-1}(U \times V), \widetilde{\vp \times \psi})$ is a smooth chart containing $((p,q), v)$ and $(\pi^{-1}(U) \times \pi^{-1}(V), \tilde{\vp} \times \tilde{\psi})$ is a smooth chart containing its inverse. We compute the transition map to be 
+    \begin{align*}
+        & (\tilde{\vp} \times \tilde{\psi} \circ F \circ (\widetilde{\vp \times \psi}))^{-1}(\overline{x}, \overline{y}, \overline{v}, \overline{w}) = (\tilde{\vp} \times \tilde{\psi}) \circ F \left( \sum v^i \frac{\partial}{\partial x^i} + \sum w^j \frac{\partial}{\partial y^j} \right)|_{(\vp \times \psi)^{-1}(\overline{x}, \overline{y})} \\ 
+         & = (\tilde{\vp} \times \tilde{\psi})\left(d(\pi_1)\left(\sum v^i \frac{\partial}{\partial x^i} + \sum w^j \frac{\partial}{\partial y^j} \right)|_{\vp^{-1}(\overline{x})}, d(\pi_2)\left(\sum v^i \frac{\partial}{\partial x^i} + \sum w^j \frac{\partial}{\partial y^j} \right)|_{\vp^{-1}(\overline{y})}\right) \\
+         & = (\tilde{\vp} \times \tilde{\psi})\left(\sum v^i \frac{\partial}{\partial x^i}|_{\vp^{-1}(\overline{x})}, \sum w^j \frac{\partial}{\partial y^j}|_{\vp^{-1}(\overline{y})}\right) \\ 
+         & = ((\overline{x}, \overline{v}), (\overline{y}, \overline{w})) 
+    \end{align*}
+    which is smooth and has smooth inverse (since the inverse of the transition map is the transition map for $F^{-1}$)hence it follows that both $F$ and $F^{-1}$ are smooth, as desired. 
 \end{proof}
 
 \begin{exercise}[Lee 3.4]
@@ -92,11 +99,22 @@
 \end{exercise}
 
 \begin{proof}
-    
+    To show that $\phi$ is an isomorphism of vector spaces first note that it is linear since 
+    \[(\phi(av+bw))(f) = (av+bw)([f]_p) = av([f]_p) + bw([f]_p) = a \phi(v)(f) + b\phi(w)(f) \] 
+    $\phi$ is injective since if $\phi(v)=0$ then $v([f]_p)=0$ for all $f$ and so $v$ must have been the 0 map to begin with. Finally, $\phi$ is surjective since given any $w \in T_pM$ consider $v \in \cD_pM$ defined by $v([f]_p)=w(f)$. Note that this is well defined since if $[f]_p = [g]_p$ then $f$ and $g$ agree on some open set containing $p$ so we must have $w(f) = w(g)$. Then it is clear that $\phi(v)=w$ and so $\phi$ is surjective. Thus it is an isomorphism. 
 \end{proof}
 
 \begin{exercise}[Lee 3.8]
     Let $M$ be a smooth manifold with or without boundary and $p \in M$. Let $\cV_p M$ denote the set of equivalence classes of curves starting at $p$ under the relation $\gamma_1 \sim \gamma_2$ of $(f \circ \gamma_1)'(0) = (f \circ \gamma_2)'(0)$ for every smooth real-valued function $f$ defined in a neighborhood of $p$. Show that the map $\psi: \cV_pM \to T_pM$ defined by $(\psi[\gamma])(f) = (f \circ \gamma)'(0)$ is well defined and bijective.  
 \end{exercise}
+
+\begin{proof}
+    First, to see that $\psi$ is well defined suppose that $\gamma_1 \sim \gamma_2$, ie. $[\gamma_1] = [\gamma_2]$. Then 
+    \[ (\psi[\gamma_1])(f) = (f \circ \gamma_1)(0) = (f \circ \gamma_2)(0) = (\psi[\gamma_2])(f) \] 
+    for all $f$ so $\psi[\gamma_1] = \psi[\gamma_2]$. By linearity of the deriviative it is clear that $\psi$ is linear as well. \\ 
+$\psi$ is injective since if $\psi[\gamma] \equiv 0$ then $(f \circ \gamma)'(0)=0$ for all $f$ and so $\gamma \sim 0$, ie, $[\gamma]= [0]$. \\ 
+Finally, to see that $\psi$ is surjective fix some chart $(U, \vp)$ containing $p$. It suffices to show its image contains $\frac{\partial}{\partial x^i}|_p$ since these form a basis for $T_pM$. Now, observe that if $\gamma: [-1,1] \to \bR^n$ is defined by $\gamma_i(t) = (p_1, \ldots, p_i+t, \ldots, p_n)$ then $(f \circ \gamma_i)'(0) = \partial f/\partial x^i (p)$ for each $f: \bR^n \to \bR$. Hence, taking the curve $\vp^{-1} \circ \gamma_i: [-1,1] \to M$, we see that for each $f: M \to \bR$, 
+\[ \frac{\partial}{\partial x^i}|_p(f) = \frac{\partial}{\partial x^i}(f \circ \vp^{-1})(p)  = (f \circ \vp^{-1} \circ \gamma_i)'(0) = \psi([\vp^{-1} \circ \gamma_i])(f)  \]
+\end{proof}
 
 \end{document}

@@ -8,7 +8,7 @@
 \end{proof}
 
 \noindent
-A poinset $P$ has the property of Baire if there is some open poinset $P^*$ such that $P \Delta P^*$ is meager.
+A pointset $P$ has the property of Baire if there is some open poinset $P^*$ such that $P \Delta P^*$ is meager.
 
 \begin{exercise}
     Prove that every Borel poinset has the property of Baire. 
@@ -22,6 +22,18 @@ A poinset $P$ has the property of Baire if there is some open poinset $P^*$ such
     Prove that for every poinset $P \subseteq \cX$, there is an $F_{\sigma}$ set $\tilde{P} \supseteq P$ such that if $A \subseteq P^*\setminus P$ is Borel, then $A$ is meager. 
 \end{exercise}
 
+\begin{proof}
+    Suppose $P$ is an arbitary pointset. Consider the set 
+    \[ D = \{x \colon \text{ for all neighboroods of} N \text{ of }x \, N\cap P \text{ is not meager}\} \] 
+    $D$ is open since if $x \in \neg D$, then there is some $B_r(x)$ such that $B_r(x) \cap P$ is meager. Now, for all $y \in B_{r/2}(x)$, $B_{r/2}(y) \subseteq B_r(x)$ and so $B_{r/2}(y) \cap P$ is meager. Hence, $B_{r/2}(x) \subseteq \neg D$. \\
+    Next, observe that $P\setminus D$ must be meager since each point $x \in P \setminus D$ must be contained in some basic open neighborhood, $N_x$ such that $N_x \cap P$ is meager and so, since there are only countable many such neighborhoods, the union $\bigcup_{x \in P \setminus D} (N_x \cap P)$ is a countable union of meager sets and so must be meager. Further, this set must be contained in some $F_{\sigma}$ meager set $W$ since if $P \setminus D = \bigcup A_n$ where each $A_n$ is no where dense, then $P \setminus D \subset \bigcup \overline{A_n}$ as well. \\
+    We define $P^* = D \subseteq W$ and claim that for any Borel set $A \subseteq P^* \subseteq P$, $A$ must be meager. To see why this is true suppose $A$ is such a Borel set. Then, there is some open set $A^*$ such that $A \Delta A^*$ is meager. $A^* \cap P \subseteq (A^* \setminus A)$ is meager and so $A^* \cap D = \vn$. However, this implies $A^* \subseteq W \cup (A^* \setminus A)$ which is meager and so we must have $A^* = \vn$. Hence, $A$ must be meager. 
+\end{proof}
+
 \begin{exercise}
     Prove that the collection of pointsets with the property of Baire is closed under the operation $\cA$; in particular $\undertilde{\Sigma}_1^1$ sets have the property of Baire. 
 \end{exercise}
+
+\begin{proof}
+    Let $\cC$ be the $\sigma$-algebra of open sets and let $J$ be the $\sigma$-ideal consisting of the meager sets. The previous exercise showed that $J$ is regular from above relative to $\cC$ and so, by the Approximation theorem, the collection of all pointsets that are in $\cC$ modulo $J$, ie. the sets with the property of Baire, is closed under $\cA$. In particular, since this class contains all Borel sets, it must contain all $\undertilde{\Sigma}_1^1$ sets as well. 
+\end{proof}
