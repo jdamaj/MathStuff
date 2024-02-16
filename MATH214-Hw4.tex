@@ -67,7 +67,8 @@
 \end{exercise}
 
 \begin{proof}
-    First, suppose that $F$ is a smooth map such that $dF_p$ is the zero map for each $p \in M$. We first consider the case where $M$ and $N$ and $\bR^m$ and $\bR^n$. In this case the map $dF_p$ is the matrix $( \partial F^1/ \partial x^j(p))_{ij}$ and so we have the all partials of $F$ are 0 at all points $p$ and so $F$ must be constant on each component. In the case where $M$ and $N$ are arbitrary manifolds, consider charts $(U, \vp)$ and $(V, \psi)$ for the points $p$ and $F(p)$, respectively. If $dF_p$ is 0 for all $p$ then $d(\psi \circ F\circ \vp^{-1})_p = 0$. Then, as this is a map between open subsets of Euclidean space the above proof shows that $\psi \circ F \circ \vp^{-1}$ must be constant on each component and so, since $\psi, \vp$ are homeomorphisms $F$ must be also. Hence, we have shown that for each point $p \in M$, $F$ is constant each component in a neighborhood of $p$ and so it follows that this holds for all of $M$. 
+    First, suppose that $F$ is a smooth map such that $dF_p$ is the zero map for each $p \in M$. We first consider the case where $M$ and $N$ and $\bR^m$ and $\bR^n$. In this case the map $dF_p$ is the matrix $( \partial F^1/ \partial x^j(p))_{ij}$ and so we have the all partials of $F$ are 0 at all points $p$ and so $F$ must be constant on each component. In the case where $M$ and $N$ are arbitrary manifolds, consider charts $(U, \vp)$ and $(V, \psi)$ for the points $p$ and $F(p)$, respectively. If $dF_p$ is 0 for all $p$ then $d(\psi \circ F\circ \vp^{-1})_p = 0$. Then, as this is a map between open subsets of Euclidean space the above proof shows that $\psi \circ F \circ \vp^{-1}$ must be constant on each component and so, since $\psi, \vp$ are homeomorphisms $F$ must be also. Hence, we have shown that for each point $p \in M$, $F$ is constant each component in a neighborhood of $p$ and so it follows that this holds for all of $M$. \\
+    Conversely, if $F$ is constant on each component of a manfiold then it follows that the corresponding differential between charts must be 0 for all $p$ since the partial of any constant maps between Euclidean spaces is 0. Hence, it follows that $dF_p$ is 0 as a map between manifolds since it is the composition of a zero map with the maps corresponding do the chart. 
 \end{proof}
 
 \begin{exercise}[Lee 3.3]
@@ -102,7 +103,9 @@
 
 \begin{proof}
     First, to show that such a homeomorphism exists we define a map $F:\bR^2 \to \bR^2$ using polar coordinates, setting $F(0)=0$ and 
-    \[ F(r, \theta) = \begin{cases} & \theta \in [\pi/4, 3\pi/4] \\ & \theta \in [3\pi/4, 5\pi/4] \\ & [5 \pi/4, 7 \pi/4] \\ & [7\pi/4] \end{cases} \]
+    \[ F(r, \theta) = \begin{cases} (\frac{4r}{\pi}(t + \pi/4), r) &  \theta \in [0, \pi/2] \\ (-r, -\frac{4r}{\pi}(t -\pi/4 ))  &  \theta \in [\pi/2, \pi] \\ (\frac{4r}{\pi}(t - \pi/4) ,-r) & \theta \in [\pi, 3 \pi/2] \\ (r, \frac{4r}{\pi}(t - \pi/4)) & \theta in [3\pi/2, 2\pi] \end{cases} \]
+    then $F$ is a homoemorphism that sends each quadrant of the circle of radius $r$ to a side of the square of side length $2r$ and so $F(\bS^1) = K$. \\ 
+    To show that no diffeomorphism satisfying this condition exists, let $\gamma: [0, 2\pi] \to \bR^2$ denote the path on the circle given by $\vp \mapsto (\cos \vp, \sin \vp)$. $\gamma$ is a smooth map so if $F: \bR^2 \to \bR^2$ was a diffeomorphism with $F(\bS^1) = K$ then $F \circ \gamma$ would be a path around the square $K$. However, no such path can be smooth if $t \in [0, 2\pi]$ is such that $F(t)= (1,1)$ then $\frac{\partial F}{\partial t} = (\partial/\partial t(F^1 \circ \cos t), \partial /\partial t (F^2 \circ \sin t))$ and so the derivative at $(1,1)$ must be nonzero in some component. However, it is clear that this is not the case since as $t$ approaches the corner from below the $x$-component of the derivative is 0 and as it approaches $(1,1)$ from the right its $y$-component is 0. Hence, no such $F$ can exist. 
 \end{proof}
 
 \begin{exercise}[Lee 3.7]
