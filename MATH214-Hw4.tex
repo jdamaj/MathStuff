@@ -83,16 +83,27 @@
          & = (\tilde{\vp} \times \tilde{\psi})\left(\sum v^i \frac{\partial}{\partial x^i}|_{\vp^{-1}(\overline{x})}, \sum w^j \frac{\partial}{\partial y^j}|_{\vp^{-1}(\overline{y})}\right) \\ 
          & = ((\overline{x}, \overline{v}), (\overline{y}, \overline{w})) 
     \end{align*}
-    which is smooth and has smooth inverse (since the inverse of the transition map is the transition map for $F^{-1}$)hence it follows that both $F$ and $F^{-1}$ are smooth, as desired. 
+    which is smooth and has smooth inverse (since the inverse of the transition map is the transition map for $F^{-1}$) hence it follows that both $F$ and $F^{-1}$ are smooth, as desired. 
 \end{proof}
 
 \begin{exercise}[Lee 3.4]
     Show that $T \bS^1$ is diffeomorphic to $\bS^1 \times \bR$. 
 \end{exercise}
 
+\begin{proof}
+    For each $p=e^{i \vp}\in \bS^1$ consider the generating element of $T_p \bS^1$ defined by $v_p(f) = (f \circ \gamma)'(0)$ where $\gamma: [-\pi/2, \pi/2] \to \bS^1$ is defined by $\gamma(t) = e^{i(\vp + t)}$. Then each element $w \in T\bS^1$ is equal to $av_p$ for some $a \in \bR$. Now, define the map $F: T\bS^1 \to \bS^1\times \bR$ by $F( (p, av_p)) = (p, a)$. It is clear that $F$ is a bijection.  We show that $F$ is smooth. Fix some $(e^{i \vp}, w) \in T_p M$. We can find some chart $(U, \theta)$ of $\bS^1$ containing $e^{i \vp}$ such that $\theta$ is an angle function. Now, $(\pi^{-1}(U, \tilde{\theta})$ is a chart containing $(e^{i\vp}, w)$ and $(U \times \bR, \theta \times \text{id}_{|bR})$ is a chart containing $F((e^{i\vp}, w))$ and $F(\pi^{-1}(U)) \subseteq U \times \bR$ and so to show $F$ is smooth it is enough to show the transition map is smooth. This follows since 
+    \[ (\theta \times \text{id}_{\bR}) \circ F \circ (\tilde{\theta})^{-1}(x, y) = (\theta \times \text{id}_{\bR}) \circ F(e^{ix}, y \cdot v_p) = (\theta \times \text{id}_{\bR})(e^{ix}, y) = (x,y) \] 
+    Note that this map has smooth inverse and since its inverse is a transition map for $F^{-1}$ is follows that $F^{-1}$ is smooth as well and so $F$ is a diffeomorphism. 
+\end{proof}
+
 \begin{exercise}
     Let $\bS^1 \subseteq \bR^2$ be the unit circle, and let $K \subseteq \bR^2$ be the boundary of the square of side 2 centered at the origin: $K = \{(x,y) \colon \max\{|x|, |y|\} = 1\}$. Show that there is a homeomorphism $F: \bR^2 \to \bR^2$ such that $F(\bS^1) = K$, but there is no diffeomorphism with the same property.  
 \end{exercise}
+
+\begin{proof}
+    First, to show that such a homeomorphism exists we define a map $F:\bR^2 \to \bR^2$ using polar coordinates, setting $F(0)=0$ and 
+    \[ F(r, \theta) = \begin{cases} & \theta \in [\pi/4, 3\pi/4] \\ & \theta \in [3\pi/4, 5\pi/4] \\ & [5 \pi/4, 7 \pi/4] \\ & [7\pi/4] \end{cases} \]
+\end{proof}
 
 \begin{exercise}[Lee 3.7]
     Let $M$ be a smooth manifold with or without boundary and $p$ a point of $M$. Let $C_p^{\infty}(M)$ denote the algebra of germs of smooth real-valued functions at $p$, and let $\cD_pM$ denote the vector space of derivations of $C_p^{\infty}(M)$. Define a map $\phi: \cD_pM \to T_pM$ by $(\phi v)f = v([f]_p)$. Show that $\phi$ is an isomorphism.
